@@ -1,0 +1,40 @@
+{
+    "users": [
+        {
+            "name": "michael",
+            "email": "michael@a.a",
+            "age": 100,
+            "interests": [
+                "abc",
+                "def"
+            ],
+            "location": "singapore",
+            "id": "e530cf1b-e7a2-4996-ad7d-bccee69e73e5"
+        },
+        {
+            "name": "michael2",
+            "email": "michael2@a.a",
+            "age": 100,
+            "interests": [
+                "abc",
+                "def"
+            ],
+            "location": "singapore",
+            "id": "5fcf7b0b-169a-4f9a-8b9c-a1c0433da515"
+        }
+    ],
+    "groups": [
+        {
+            "name": "michaeling",
+            "description": "mich",
+            "activity": "string",
+            "location": "string",
+            "max_members": 100,
+            "id": "6e1f2ee9-ef78-44b7-aa80-f7409daa56c4",
+            "members": [
+                "5fcf7b0b-169a-4f9a-8b9c-a1c0433da515"
+            ],
+            "admin_id": "5fcf7b0b-169a-4f9a-8b9c-a1c0433da515"
+        }
+    ]
+}
