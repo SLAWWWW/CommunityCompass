@@ -123,7 +123,7 @@ def test_get_groups_looking_for_members(client: TestClient, admin_user):
         json={"name": "Open", "description": "D", "activity": "A", "location": "L", "max_members": 2}
     )
     
-    response = client.get("/api/v1/groups/groups_lf", headers={"X-User-ID": admin_user})
+    response = client.get("/api/v1/groups/groups_not_full", headers={"X-User-ID": admin_user})
     assert response.status_code == 200
     data = response.json()
     
