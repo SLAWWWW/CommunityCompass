@@ -28,12 +28,14 @@ def test_create_group(client: TestClient, admin_user):
             "description": "Fun",
             "activity": "Badminton",
             "location": "Court A",
-            "max_members": 2
+            "max_members": 2,
+            "age_group": "18-25"
         }
     )
     assert response.status_code == 201
     data = response.json()
     assert data["name"] == "Badminton Group"
+    assert data["age_group"] == "18-25"
     assert data["admin_id"] == admin_user
     assert admin_user in data["members"]
 

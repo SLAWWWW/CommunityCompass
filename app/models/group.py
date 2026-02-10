@@ -8,6 +8,7 @@ class GroupBase(BaseModel):
     activity: str
     location: str
     max_members: int
+    age_group: str = "All Ages"
 
 class GroupCreate(GroupBase):
     pass
