@@ -87,3 +87,28 @@ def get_user_likes(user_id: str):
         raise HTTPException(status_code=404, detail=f"User '{user_id}' not found")
     
     return len(user.get("liked_by", []))
+
+@router.post("/{user_id}/unlike", response_model=User)
+def unlike_user(
+    user_id: str,
+    x_user_id: str = Header(..., description="User ID of the user who is unliking")
+):
+    """
+    Unlike a user.
+    """
+    # Target user
+    target_user = storage.get_item_by_id("users", user_id)
+    if not target_user:
+        raise HTTPException(status_code=404, detail=f"User '{user_id}' not found")
+        
+    # Validation: Actor exists
+    actor_user = storage.get_item_by_id("users", x_user_id)
+    if not actor_user:
+        raise HTTPException(status_code=404, detail="Actor user not found")
+        
+    # Logic: Remove like if exists
+    if "liked_by" in target_user and x_user_id in target_user["liked_by"]:
+        target_user["liked_by"].remove(x_user_id)
+        storage.update_item("users", user_id, {"liked_by": target_user["liked_by"]})
+        
+    return target_user
