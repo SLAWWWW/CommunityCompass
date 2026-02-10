@@ -17,3 +17,7 @@ class Group(GroupBase):
     id: str = Field(default_factory=lambda: str(uuid4()))
     members: List[str] = []  # List of User IDs
     admin_id: str
+
+class GroupRecommendation(Group):
+    relevance_score: int
+    score_breakdown: dict = {}

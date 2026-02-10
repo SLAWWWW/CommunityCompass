@@ -35,7 +35,9 @@ def read_groups(skip: int = 0, limit: int = 100):
     groups = storage.get_all("groups")
     return groups[skip : skip + limit]
 
-@router.get("/recommended", response_model=List[Group])
+from app.models.group import Group, GroupCreate, GroupRecommendation
+
+@router.get("/recommended", response_model=List[GroupRecommendation])
 def get_recommendations(
     limit: int = 10,
     x_user_id: str = Header(..., description="User to get recommendations for")

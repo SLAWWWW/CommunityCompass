@@ -1,3 +1,5 @@
+social connectedness platform leveraging semantic similarity algorithm to connect people with similar interests and activities.
+
 ## Prerequisites
 -   Python 3.12+
 

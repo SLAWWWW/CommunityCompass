@@ -5,6 +5,8 @@
 - [ ] **Recommendation Engine**:
     - [ ] Match users to groups based on `interests`.
     - [ ] Simple scoring: +1 for matching interest, +1 for same location.
+    - [ ] Add semantic similarity algorithm to connect people with similar interests and activities.
+        - [ ] use sbert to calculate similarity between user interests and group activities.
 - [v] **Rating System**:
     - [v] like unlike functionality
 
