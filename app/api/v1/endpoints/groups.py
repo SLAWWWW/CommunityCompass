@@ -92,14 +92,14 @@ def leave_group(
     
     return group_data
 
-@router.get("/groups_lf", response_model=List[Group])
-def read_groups_lf(
+@router.get("/groups_not_full", response_model=List[Group])
+def read_groups_not_full(
     skip: int = 0,
     limit: int = 100,
     x_user_id: str = Header(..., description="User ID of the user")
 ):
     """
-    Get groups that are looking for members.
+    Get groups that are looking for members (not full).
     """
     groups = storage.get_all("groups")[skip : skip + limit]
     groups_lf = []
