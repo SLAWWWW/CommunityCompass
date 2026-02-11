@@ -473,7 +473,8 @@
             "members": [
                 "user-005",
                 "user-008",
-                "user-020"
+                "user-020",
+                "community-compass-demo-user"
             ],
             "admin_id": "user-005"
         },
@@ -703,6 +704,16 @@
                 "user-003"
             ],
             "admin_id": "user-003"
+        }
+    ],
+    "messages": [
+        {
+            "id": "msg-1770792279.650541",
+            "group_id": "group-001",
+            "user_id": "community-compass-demo-user",
+            "user_name": "Demo User",
+            "message": "hello",
+            "timestamp": "2026-02-11T14:44:39.650541"
         }
     ]
 }

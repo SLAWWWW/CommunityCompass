@@ -9,6 +9,7 @@ import { api } from "@/lib/api";
 import type { Group, User } from "@/types";
 import { toast } from "sonner";
 import { DEMO_USER_ID } from "@/lib/constants";
+import GroupChat from "@/components/GroupChat";
 
 export default function WaitingRoom() {
     const [, navigate] = useLocation();
@@ -18,13 +19,19 @@ export default function WaitingRoom() {
     const [loading, setLoading] = useState(true);
     const [isJoining, setIsJoining] = useState(false);
     const [isMember, setIsMember] = useState(false);
+    const [currentUser, setCurrentUser] = useState<User | null>(null);
 
     const fetchGroupDetails = async () => {
         if (!params.groupId) return;
 
         try {
-            // Fetch group data
-            const groupRes = await api.get<Group[]>("/api/v1/groups/");
+            // Fetch group data, users, and current user in parallel
+            const [groupRes, usersRes, currentUserRes] = await Promise.all([
+                api.get<Group[]>("/api/v1/groups/"),
+                api.get<User[]>("/api/v1/users/"),
+                api.get<User>(`/api/v1/users/${DEMO_USER_ID}`)
+            ]);
+
             const foundGroup = groupRes.data.find(g => g.id === params.groupId);
 
             if (!foundGroup) {
@@ -35,9 +42,9 @@ export default function WaitingRoom() {
 
             setGroup(foundGroup);
             setIsMember(foundGroup.members.includes(DEMO_USER_ID));
+            setCurrentUser(currentUserRes.data);
 
-            // Fetch all users to get member details
-            const usersRes = await api.get<User[]>("/api/v1/users/");
+            // Filter group members
             const groupMembers = usersRes.data.filter(user =>
                 foundGroup.members.includes(user.id)
             );
@@ -95,7 +102,7 @@ export default function WaitingRoom() {
 
     return (
         <div className="min-h-screen bg-background p-8 overflow-auto">
-            <div className="max-w-6xl mx-auto space-y-8">
+            <div className="max-w-7xl mx-auto space-y-8">
                 {/* Header */}
                 <div className="flex justify-between items-center border-b border-primary/20 pb-4">
                     <div className="flex items-center gap-4">
@@ -166,56 +173,70 @@ export default function WaitingRoom() {
                     </CardContent>
                 </Card>
 
-                {/* Members Grid */}
-                <Card className="glass-panel border-primary/10">
-                    <CardHeader>
-                        <CardTitle className="text-xl font-bold text-primary flex items-center gap-2">
-                            <Users className="w-5 h-5" />
-                            Members ({members.length}/{group.max_members})
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            {members.map((member) => (
-                                <Card
-                                    key={member.id}
-                                    className="glass-panel border-primary/10 hover:border-primary/40 transition-all cursor-pointer"
-                                    onClick={() => navigate(`/profile/${member.id}`)}
-                                >
-                                    <CardContent className="p-4 flex flex-col items-center gap-3">
-                                        <Avatar className="w-16 h-16 border-2 border-primary/50">
-                                            <AvatarFallback className="bg-background text-primary text-lg font-bold">
-                                                <UserIcon className="h-8 w-8" />
-                                            </AvatarFallback>
-                                        </Avatar>
-                                        <div className="text-center w-full">
-                                            <h3 className="font-bold text-sm truncate">{member.name}</h3>
-                                            <p className="text-xs text-muted-foreground truncate">{member.location}</p>
-                                            {member.id === group.admin_id && (
-                                                <Badge variant="secondary" className="text-[10px] mt-2">Admin</Badge>
-                                            )}
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            ))}
+                {/* Two Column Layout: Members + Chat */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {/* Members Grid - Takes 2 columns on large screens */}
+                    <div className="lg:col-span-2">
+                        <Card className="glass-panel border-primary/10">
+                            <CardHeader>
+                                <CardTitle className="text-xl font-bold text-primary flex items-center gap-2">
+                                    <Users className="w-5 h-5" />
+                                    Members ({members.length}/{group.max_members})
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                    {members.map((member) => (
+                                        <Card
+                                            key={member.id}
+                                            className="glass-panel border-primary/10 hover:border-primary/40 transition-all cursor-pointer"
+                                            onClick={() => navigate(`/profile/${member.id}`)}
+                                        >
+                                            <CardContent className="p-4 flex flex-col items-center gap-3">
+                                                <Avatar className="w-16 h-16 border-2 border-primary/50">
+                                                    <AvatarFallback className="bg-background text-primary text-lg font-bold">
+                                                        <UserIcon className="h-8 w-8" />
+                                                    </AvatarFallback>
+                                                </Avatar>
+                                                <div className="text-center w-full">
+                                                    <h3 className="font-bold text-sm truncate">{member.name}</h3>
+                                                    <p className="text-xs text-muted-foreground truncate">{member.location}</p>
+                                                    {member.id === group.admin_id && (
+                                                        <Badge variant="secondary" className="text-[10px] mt-2">Admin</Badge>
+                                                    )}
+                                                </div>
+                                            </CardContent>
+                                        </Card>
+                                    ))}
 
-                            {/* Empty slots */}
-                            {Array.from({ length: group.max_members - members.length }).map((_, idx) => (
-                                <Card
-                                    key={`empty-${idx}`}
-                                    className="glass-panel border-primary/5 border-dashed"
-                                >
-                                    <CardContent className="p-4 flex flex-col items-center justify-center gap-3 min-h-[140px]">
-                                        <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center">
-                                            <Users className="w-6 h-6 text-primary/30" />
-                                        </div>
-                                        <span className="text-xs text-muted-foreground">Open Slot</span>
-                                    </CardContent>
-                                </Card>
-                            ))}
-                        </div>
-                    </CardContent>
-                </Card>
+                                    {/* Empty slots */}
+                                    {Array.from({ length: group.max_members - members.length }).map((_, idx) => (
+                                        <Card
+                                            key={`empty-${idx}`}
+                                            className="glass-panel border-primary/5 border-dashed"
+                                        >
+                                            <CardContent className="p-4 flex flex-col items-center justify-center gap-3 min-h-[140px]">
+                                                <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center">
+                                                    <Users className="w-6 h-6 text-primary/30" />
+                                                </div>
+                                                <span className="text-xs text-muted-foreground">Open Slot</span>
+                                            </CardContent>
+                                        </Card>
+                                    ))}
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
+
+                    {/* Chat - Takes 1 column on large screens */}
+                    <div className="lg:col-span-1">
+                        {currentUser && (
+                            <div className="h-[600px]">
+                                <GroupChat groupId={group.id} currentUser={currentUser} />
+                            </div>
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );
