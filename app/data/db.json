@@ -15,163 +15,692 @@
             "liked_by": []
         },
         {
-            "name": "edward",
-            "email": "e@e.com",
-            "age": 18,
+            "name": "Marcus Chen",
+            "email": "marcus.chen@email.com",
+            "age": 28,
             "interests": [
-                "swimming"
-            ],
-            "location": "East",
-            "id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40",
-            "liked_by": []
-        },
-        {
-            "name": "Sarah Kim",
-            "email": "sarah@example.com",
-            "age": 23,
-            "interests": [
-                "Coding",
-                "Gaming",
-                "Photography"
+                "Basketball",
+                "Fitness",
+                "Cooking",
+                "Tech"
             ],
             "location": "San Francisco, CA",
-            "id": "99efa34f-81f5-428e-b5dc-d2b2f0b9af51",
+            "id": "user-001",
             "liked_by": [
                 "community-compass-demo-user"
             ]
         },
         {
-            "name": "Sarah Kim",
-            "email": "sarah@test.com",
-            "age": 23,
+            "name": "Olivia Martinez",
+            "email": "olivia.m@email.com",
+            "age": 24,
             "interests": [
-                "Coding",
-                "Gaming",
-                "Photography"
-            ],
-            "location": "San Francisco, CA",
-            "id": "52f8d44b-37c8-474f-813d-2c3258a6f6f7",
-            "liked_by": []
-        },
-        {
-            "name": "John Rivera",
-            "email": "john@test.com",
-            "age": 27,
-            "interests": [
-                "Hiking",
-                "Music",
-                "Travel"
-            ],
-            "location": "Los Angeles, CA",
-            "id": "5938e0e6-6d18-4d91-aacb-79c7d60fa907",
-            "liked_by": []
-        },
-        {
-            "name": "Elena Vasquez",
-            "email": "elena@test.com",
-            "age": 22,
-            "interests": [
+                "Yoga",
+                "Meditation",
                 "Reading",
-                "Coding",
+                "Hiking"
+            ],
+            "location": "Austin, TX",
+            "id": "user-002",
+            "liked_by": []
+        },
+        {
+            "name": "James Park",
+            "email": "jpark@email.com",
+            "age": 31,
+            "interests": [
+                "Gaming",
+                "Music Production",
+                "Coffee",
+                "Anime"
+            ],
+            "location": "Seattle, WA",
+            "id": "user-003",
+            "liked_by": [
+                "community-compass-demo-user",
+                "user-001"
+            ]
+        },
+        {
+            "name": "Sophia Taylor",
+            "email": "sophia.t@email.com",
+            "age": 26,
+            "interests": [
+                "Photography",
+                "Travel",
+                "Fashion",
                 "Art"
             ],
             "location": "New York, NY",
-            "id": "b0946a1e-c308-4458-a9a5-a58c54ecc242",
+            "id": "user-004",
+            "liked_by": []
+        },
+        {
+            "name": "Liam Anderson",
+            "email": "liam.a@email.com",
+            "age": 29,
+            "interests": [
+                "Rock Climbing",
+                "Camping",
+                "Cycling",
+                "Hiking"
+            ],
+            "location": "Denver, CO",
+            "id": "user-005",
             "liked_by": [
                 "community-compass-demo-user"
             ]
+        },
+        {
+            "name": "Emma Wilson",
+            "email": "emma.w@email.com",
+            "age": 23,
+            "interests": [
+                "Dance",
+                "Theater",
+                "Music",
+                "Wine"
+            ],
+            "location": "Portland, OR",
+            "id": "user-006",
+            "liked_by": []
+        },
+        {
+            "name": "Noah Garcia",
+            "email": "noah.g@email.com",
+            "age": 27,
+            "interests": [
+                "Coding",
+                "AI",
+                "Chess",
+                "Sci-Fi"
+            ],
+            "location": "Boston, MA",
+            "id": "user-007",
+            "liked_by": [
+                "user-003",
+                "user-004"
+            ]
+        },
+        {
+            "name": "Ava Johnson",
+            "email": "ava.j@email.com",
+            "age": 25,
+            "interests": [
+                "Running",
+                "Nutrition",
+                "Yoga",
+                "Podcasts"
+            ],
+            "location": "Miami, FL",
+            "id": "user-008",
+            "liked_by": []
+        },
+        {
+            "name": "Ethan Brown",
+            "email": "ethan.b@email.com",
+            "age": 30,
+            "interests": [
+                "Surfing",
+                "Beach Volleyball",
+                "Photography",
+                "Travel"
+            ],
+            "location": "San Diego, CA",
+            "id": "user-009",
+            "liked_by": [
+                "community-compass-demo-user"
+            ]
+        },
+        {
+            "name": "Isabella Lee",
+            "email": "isabella.l@email.com",
+            "age": 22,
+            "interests": [
+                "Painting",
+                "Crafts",
+                "Indie Music",
+                "Vintage"
+            ],
+            "location": "Brooklyn, NY",
+            "id": "user-010",
+            "liked_by": []
+        },
+        {
+            "name": "Mason Davis",
+            "email": "mason.d@email.com",
+            "age": 33,
+            "interests": [
+                "Woodworking",
+                "Gardening",
+                "Beer",
+                "BBQ"
+            ],
+            "location": "Nashville, TN",
+            "id": "user-011",
+            "liked_by": [
+                "user-002"
+            ]
+        },
+        {
+            "name": "Mia Rodriguez",
+            "email": "mia.r@email.com",
+            "age": 24,
+            "interests": [
+                "Writing",
+                "Poetry",
+                "Coffee",
+                "Cats"
+            ],
+            "location": "Chicago, IL",
+            "id": "user-012",
+            "liked_by": []
+        },
+        {
+            "name": "Lucas Miller",
+            "email": "lucas.m@email.com",
+            "age": 28,
+            "interests": [
+                "Soccer",
+                "Gaming",
+                "Technology",
+                "Startups"
+            ],
+            "location": "San Francisco, CA",
+            "id": "user-013",
+            "liked_by": [
+                "community-compass-demo-user",
+                "user-007"
+            ]
+        },
+        {
+            "name": "Charlotte White",
+            "email": "charlotte.w@email.com",
+            "age": 26,
+            "interests": [
+                "Book Clubs",
+                "Wine Tasting",
+                "Traveling",
+                "Baking"
+            ],
+            "location": "Philadelphia, PA",
+            "id": "user-014",
+            "liked_by": []
+        },
+        {
+            "name": "Aiden Harris",
+            "email": "aiden.h@email.com",
+            "age": 29,
+            "interests": [
+                "Martial Arts",
+                "Meditation",
+                "Philosophy",
+                "Health"
+            ],
+            "location": "Los Angeles, CA",
+            "id": "user-015",
+            "liked_by": [
+                "user-008"
+            ]
+        },
+        {
+            "name": "Amelia Clark",
+            "email": "amelia.c@email.com",
+            "age": 23,
+            "interests": [
+                "Volunteering",
+                "Environment",
+                "Hiking",
+                "Dogs"
+            ],
+            "location": "Seattle, WA",
+            "id": "user-016",
+            "liked_by": []
+        },
+        {
+            "name": "Benjamin Lewis",
+            "email": "ben.l@email.com",
+            "age": 31,
+            "interests": [
+                "Cars",
+                "Racing",
+                "Engineering",
+                "Drones"
+            ],
+            "location": "Detroit, MI",
+            "id": "user-017",
+            "liked_by": [
+                "community-compass-demo-user"
+            ]
+        },
+        {
+            "name": "Harper Walker",
+            "email": "harper.w@email.com",
+            "age": 25,
+            "interests": [
+                "Fitness",
+                "Dance",
+                "Fashion",
+                "Social Media"
+            ],
+            "location": "Los Angeles, CA",
+            "id": "user-018",
+            "liked_by": []
+        },
+        {
+            "name": "Alexander Hall",
+            "email": "alex.h@email.com",
+            "age": 27,
+            "interests": [
+                "Music",
+                "Guitar",
+                "Concerts",
+                "Craft Beer"
+            ],
+            "location": "Austin, TX",
+            "id": "user-019",
+            "liked_by": [
+                "user-006",
+                "user-012"
+            ]
+        },
+        {
+            "name": "Evelyn Young",
+            "email": "evelyn.y@email.com",
+            "age": 24,
+            "interests": [
+                "Photography",
+                "Nature",
+                "Hiking",
+                "Wildlife"
+            ],
+            "location": "Denver, CO",
+            "id": "user-020",
+            "liked_by": []
         }
     ],
     "groups": [
         {
-            "name": "tennis",
-            "description": "-",
+            "name": "SF Bay Area Hikers",
+            "description": "Weekend hiking adventures in the beautiful Bay Area trails. All skill levels welcome!",
             "activity": [
-                "Tennis"
+                "Hiking",
+                "Nature",
+                "Outdoor"
             ],
-            "location": "East",
+            "location": "San Francisco, CA",
+            "max_members": 15,
+            "age_group": "18-35",
+            "id": "group-001",
+            "members": [
+                "community-compass-demo-user",
+                "user-001",
+                "user-005",
+                "user-020"
+            ],
+            "admin_id": "user-001"
+        },
+        {
+            "name": "NYC Coffee Enthusiasts",
+            "description": "Exploring the best coffee shops in New York City, one espresso at a time.",
+            "activity": [
+                "Coffee",
+                "Social",
+                "Food & Drink"
+            ],
+            "location": "New York, NY",
+            "max_members": 12,
+            "age_group": "All Ages",
+            "id": "group-002",
+            "members": [
+                "user-004",
+                "user-012",
+                "user-003"
+            ],
+            "admin_id": "user-004"
+        },
+        {
+            "name": "Beach Volleyball Squad",
+            "description": "Play volleyball every weekend at the beach. Competitive but friendly!",
+            "activity": [
+                "Beach Volleyball",
+                "Sports",
+                "Fitness"
+            ],
+            "location": "San Diego, CA",
+            "max_members": 10,
+            "age_group": "18-35",
+            "id": "group-003",
+            "members": [
+                "user-009",
+                "community-compass-demo-user",
+                "user-018"
+            ],
+            "admin_id": "user-009"
+        },
+        {
+            "name": "Code & Coffee",
+            "description": "Developers meeting up to code on side projects and share knowledge.",
+            "activity": [
+                "Coding",
+                "Tech",
+                "Learning"
+            ],
+            "location": "Seattle, WA",
+            "max_members": 20,
+            "age_group": "All Ages",
+            "id": "group-004",
+            "members": [
+                "user-003",
+                "user-007",
+                "user-013",
+                "user-016"
+            ],
+            "admin_id": "user-007"
+        },
+        {
+            "name": "Urban Photography Collective",
+            "description": "Capturing the beauty of city life through our lenses.",
+            "activity": [
+                "Photography",
+                "Art",
+                "Urban"
+            ],
+            "location": "Brooklyn, NY",
+            "max_members": 12,
+            "age_group": "All Ages",
+            "id": "group-005",
+            "members": [
+                "user-004",
+                "user-010",
+                "user-020",
+                "community-compass-demo-user"
+            ],
+            "admin_id": "user-010"
+        },
+        {
+            "name": "Yoga in the Park",
+            "description": "Free outdoor yoga sessions every Sunday morning. Namaste!",
+            "activity": [
+                "Yoga",
+                "Wellness",
+                "Outdoor"
+            ],
+            "location": "Austin, TX",
+            "max_members": 25,
+            "age_group": "All Ages",
+            "id": "group-006",
+            "members": [
+                "user-002",
+                "user-008",
+                "user-019"
+            ],
+            "admin_id": "user-002"
+        },
+        {
+            "name": "Board Game Nights",
+            "description": "Weekly board game meetups. From Catan to Pandemic, we play it all!",
+            "activity": [
+                "Gaming",
+                "Social",
+                "Indoor"
+            ],
+            "location": "Portland, OR",
+            "max_members": 15,
+            "age_group": "18-40",
+            "id": "group-007",
+            "members": [
+                "user-006",
+                "user-003",
+                "user-013"
+            ],
+            "admin_id": "user-006"
+        },
+        {
+            "name": "Trail Runners Club",
+            "description": "Running through scenic trails. Various distances to accommodate all levels.",
+            "activity": [
+                "Running",
+                "Fitness",
+                "Outdoor"
+            ],
+            "location": "Denver, CO",
+            "max_members": 18,
+            "age_group": "18-45",
+            "id": "group-008",
+            "members": [
+                "user-005",
+                "user-008",
+                "user-020"
+            ],
+            "admin_id": "user-005"
+        },
+        {
+            "name": "Indie Music Lovers",
+            "description": "Discovering new indie artists and attending local shows together.",
+            "activity": [
+                "Music",
+                "Concerts",
+                "Social"
+            ],
+            "location": "Austin, TX",
+            "max_members": 20,
+            "age_group": "18-35",
+            "id": "group-009",
+            "members": [
+                "user-006",
+                "user-010",
+                "user-019",
+                "user-012"
+            ],
+            "admin_id": "user-019"
+        },
+        {
+            "name": "Sustainability Warriors",
+            "description": "Making our city greener one action at a time. Join our cleanup drives!",
+            "activity": [
+                "Environment",
+                "Volunteering",
+                "Community"
+            ],
+            "location": "Seattle, WA",
+            "max_members": 30,
+            "age_group": "All Ages",
+            "id": "group-010",
+            "members": [
+                "user-016",
+                "user-003",
+                "community-compass-demo-user"
+            ],
+            "admin_id": "user-016"
+        },
+        {
+            "name": "Rock Climbing Adventures",
+            "description": "Indoor and outdoor climbing sessions for climbers of all skill levels.",
+            "activity": [
+                "Rock Climbing",
+                "Sports",
+                "Adventure"
+            ],
+            "location": "Denver, CO",
+            "max_members": 12,
+            "age_group": "18-40",
+            "id": "group-011",
+            "members": [
+                "user-005",
+                "user-020",
+                "user-015"
+            ],
+            "admin_id": "user-005"
+        },
+        {
+            "name": "Bookworms United",
+            "description": "Monthly book club discussing contemporary fiction and classics.",
+            "activity": [
+                "Reading",
+                "Books",
+                "Discussion"
+            ],
+            "location": "Chicago, IL",
+            "max_members": 15,
+            "age_group": "All Ages",
+            "id": "group-012",
+            "members": [
+                "user-012",
+                "user-014",
+                "user-002"
+            ],
+            "admin_id": "user-012"
+        },
+        {
+            "name": "Sunset Photography Walks",
+            "description": "Capturing golden hour magic on weekly photo walks around the city.",
+            "activity": [
+                "Photography",
+                "Walking",
+                "Nature"
+            ],
+            "location": "San Francisco, CA",
             "max_members": 10,
             "age_group": "All Ages",
-            "id": "tennis-group-unique-id-456",
+            "id": "group-013",
             "members": [
-                "7fc83204-2a12-4cb3-8f1f-a3115cb64e40",
-                "community-compass-demo-user"
+                "user-001",
+                "community-compass-demo-user",
+                "user-004"
             ],
-            "admin_id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
+            "admin_id": "community-compass-demo-user"
         },
         {
-            "name": "Beach Volleyball Enthusiasts",
-            "description": "Weekly beach volleyball games, all skill levels welcome!",
+            "name": "Craft Beer Tasting Club",
+            "description": "Exploring local breweries and tasting unique craft beers.",
             "activity": [
-                "volleyball",
-                "beach",
-                "sports",
-                "outdoor"
+                "Beer",
+                "Food & Drink",
+                "Social"
             ],
-            "location": "East",
+            "location": "Nashville, TN",
             "max_members": 12,
-            "age_group": "18-35",
-            "id": "beach-vball-001",
-            "members": [
-                "7fc83204-2a12-4cb3-8f1f-a3115cb64e40",
-                "community-compass-demo-user"
-            ],
-            "admin_id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
-        },
-        {
-            "name": "Photography Walkers",
-            "description": "Explore the city with your camera. Street photography and urban exploration.",
-            "activity": [
-                "photography",
-                "walking",
-                "urban",
-                "creative"
-            ],
-            "location": "Central",
-            "max_members": 8,
-            "age_group": "All Ages",
-            "id": "photo-walk-002",
-            "members": [
-                "7fc83204-2a12-4cb3-8f1f-a3115cb64e40",
-                "community-compass-demo-user"
-            ],
-            "admin_id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
-        },
-        {
-            "name": "Board Game Night",
-            "description": "Strategy games, party games, and everything in between. BYOB!",
-            "activity": [
-                "board games",
-                "social",
-                "indoor",
-                "strategy"
-            ],
-            "location": "West",
-            "max_members": 6,
             "age_group": "21+",
-            "id": "boardgame-003",
+            "id": "group-014",
             "members": [
-                "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
+                "user-011",
+                "user-019"
             ],
-            "admin_id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
+            "admin_id": "user-011"
         },
         {
-            "name": "Morning Swimmers",
-            "description": "Early morning lap swimming at public pool. Fitness focused.",
+            "name": "Morning Meditation Circle",
+            "description": "Start your day with peace. Guided meditation every weekday morning.",
             "activity": [
-                "swimming",
-                "fitness",
-                "morning",
-                "health"
+                "Meditation",
+                "Wellness",
+                "Mindfulness"
             ],
-            "location": "North",
-            "max_members": 5,
-            "age_group": "18+",
-            "id": "swim-morning-004",
+            "location": "Los Angeles, CA",
+            "max_members": 20,
+            "age_group": "All Ages",
+            "id": "group-015",
             "members": [
-                "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
+                "user-015",
+                "user-002",
+                "user-018"
             ],
-            "admin_id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
+            "admin_id": "user-015"
+        },
+        {
+            "name": "Tech Startup Founders",
+            "description": "Network of entrepreneurs building the next big thing. Share ideas and challenges.",
+            "activity": [
+                "Startups",
+                "Tech",
+                "Networking"
+            ],
+            "location": "San Francisco, CA",
+            "max_members": 25,
+            "age_group": "25-45",
+            "id": "group-016",
+            "members": [
+                "user-001",
+                "user-007",
+                "user-013",
+                "user-017"
+            ],
+            "admin_id": "user-013"
+        },
+        {
+            "name": "Weekend BBQ Masters",
+            "description": "Perfecting the art of BBQ and grilling. From brisket to ribs!",
+            "activity": [
+                "BBQ",
+                "Cooking",
+                "Food"
+            ],
+            "location": "Nashville, TN",
+            "max_members": 15,
+            "age_group": "All Ages",
+            "id": "group-017",
+            "members": [
+                "user-011",
+                "user-014"
+            ],
+            "admin_id": "user-011"
+        },
+        {
+            "name": "Dog Park Regulars",
+            "description": "Our dogs are best friends, so we should be too! Weekend dog park meetups.",
+            "activity": [
+                "Dogs",
+                "Pets",
+                "Outdoor"
+            ],
+            "location": "Seattle, WA",
+            "max_members": 20,
+            "age_group": "All Ages",
+            "id": "group-018",
+            "members": [
+                "user-016",
+                "community-compass-demo-user"
+            ],
+            "admin_id": "user-016"
+        },
+        {
+            "name": "Dance Fitness Crew",
+            "description": "High-energy dance workouts that don't feel like exercise!",
+            "activity": [
+                "Dance",
+                "Fitness",
+                "Music"
+            ],
+            "location": "Miami, FL",
+            "max_members": 18,
+            "age_group": "18-40",
+            "id": "group-019",
+            "members": [
+                "user-008",
+                "user-018",
+                "user-006"
+            ],
+            "admin_id": "user-008"
+        },
+        {
+            "name": "Film & Discussion Society",
+            "description": "Weekly movie screenings followed by thoughtful discussions.",
+            "activity": [
+                "Movies",
+                "Film",
+                "Discussion"
+            ],
+            "location": "Los Angeles, CA",
+            "max_members": 16,
+            "age_group": "All Ages",
+            "id": "group-020",
+            "members": [
+                "user-015",
+                "user-018",
+                "user-003"
+            ],
+            "admin_id": "user-003"
         }
     ]
 }
