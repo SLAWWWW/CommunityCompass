@@ -125,7 +125,8 @@ export default function WaitingRoom() {
                             {members.map((member) => (
                                 <Card
                                     key={member.id}
-                                    className="glass-panel border-primary/10 hover:border-primary/40 transition-all"
+                                    className="glass-panel border-primary/10 hover:border-primary/40 transition-all cursor-pointer"
+                                    onClick={() => navigate(`/profile/${member.id}`)}
                                 >
                                     <CardContent className="p-4 flex flex-col items-center gap-3">
                                         <Avatar className="w-16 h-16 border-2 border-primary/50">
