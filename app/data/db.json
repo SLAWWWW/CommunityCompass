@@ -708,12 +708,548 @@
     ],
     "messages": [
         {
-            "id": "msg-1770792279.650541",
+            "id": "msg-group-001-0",
+            "group_id": "group-001",
+            "user_id": "user-001",
+            "user_name": "Marcus Chen",
+            "message": "Anyone up for MacRitchie this Saturday? Weather looks good!",
+            "timestamp": "2026-02-08T15:15:35.079457"
+        },
+        {
+            "id": "msg-group-001-1",
             "group_id": "group-001",
             "user_id": "community-compass-demo-user",
             "user_name": "Demo User",
-            "message": "hello",
-            "timestamp": "2026-02-11T14:44:39.650541"
+            "message": "Count me in! What time are you thinking?",
+            "timestamp": "2026-02-08T16:52:35.079457"
+        },
+        {
+            "id": "msg-group-001-2",
+            "group_id": "group-001",
+            "user_id": "user-005",
+            "user_name": "Liam Anderson",
+            "message": "7am start? Beat the heat",
+            "timestamp": "2026-02-08T19:05:35.079457"
+        },
+        {
+            "id": "msg-group-001-3",
+            "group_id": "group-001",
+            "user_id": "user-020",
+            "user_name": "Evelyn Young",
+            "message": "Perfect! I'll bring extra water",
+            "timestamp": "2026-02-08T20:50:35.079457"
+        },
+        {
+            "id": "msg-group-002-0",
+            "group_id": "group-002",
+            "user_id": "user-004",
+            "user_name": "Sophia Taylor",
+            "message": "Just tried the new espresso at Tiong Bahru Bakery 😍",
+            "timestamp": "2026-02-08T14:50:35.079457"
+        },
+        {
+            "id": "msg-group-002-1",
+            "group_id": "group-002",
+            "user_id": "user-012",
+            "user_name": "Mia Rodriguez",
+            "message": "How was it? Been meaning to check it out",
+            "timestamp": "2026-02-08T17:13:35.079457"
+        },
+        {
+            "id": "msg-group-002-2",
+            "group_id": "group-002",
+            "user_id": "user-003",
+            "user_name": "James Park",
+            "message": "Their cold brew is incredible too",
+            "timestamp": "2026-02-08T19:13:35.079457"
+        },
+        {
+            "id": "msg-group-003-0",
+            "group_id": "group-003",
+            "user_id": "user-009",
+            "user_name": "Ethan Brown",
+            "message": "Game on this Sunday at Sentosa! Who's in?",
+            "timestamp": "2026-02-08T14:51:35.079457"
+        },
+        {
+            "id": "msg-group-003-1",
+            "group_id": "group-003",
+            "user_id": "community-compass-demo-user",
+            "user_name": "Demo User",
+            "message": "I'm in! 🏐",
+            "timestamp": "2026-02-08T17:06:35.079457"
+        },
+        {
+            "id": "msg-group-003-2",
+            "group_id": "group-003",
+            "user_id": "user-018",
+            "user_name": "Harper Walker",
+            "message": "What time?",
+            "timestamp": "2026-02-08T19:09:35.079457"
+        },
+        {
+            "id": "msg-group-003-3",
+            "group_id": "group-003",
+            "user_id": "user-009",
+            "user_name": "Ethan Brown",
+            "message": "4pm to catch the sunset!",
+            "timestamp": "2026-02-08T21:12:35.079457"
+        },
+        {
+            "id": "msg-group-004-0",
+            "group_id": "group-004",
+            "user_id": "user-003",
+            "user_name": "James Park",
+            "message": "Anyone tried the new React 19 features yet?",
+            "timestamp": "2026-02-08T14:59:35.079457"
+        },
+        {
+            "id": "msg-group-004-1",
+            "group_id": "group-004",
+            "user_id": "user-007",
+            "user_name": "Noah Garcia",
+            "message": "Yeah! The compiler is game-changing",
+            "timestamp": "2026-02-08T17:10:35.079457"
+        },
+        {
+            "id": "msg-group-004-2",
+            "group_id": "group-004",
+            "user_id": "user-013",
+            "user_name": "Lucas Miller",
+            "message": "Still on 18 here. Worth upgrading?",
+            "timestamp": "2026-02-08T18:57:35.079457"
+        },
+        {
+            "id": "msg-group-004-3",
+            "group_id": "group-004",
+            "user_id": "user-016",
+            "user_name": "Amelia Clark",
+            "message": "Definitely. The performance boost is real",
+            "timestamp": "2026-02-08T21:03:35.079457"
+        },
+        {
+            "id": "msg-group-005-0",
+            "group_id": "group-005",
+            "user_id": "user-004",
+            "user_name": "Sophia Taylor",
+            "message": "Golden hour at Marina Bay tomorrow. Join me?",
+            "timestamp": "2026-02-08T15:11:35.079457"
+        },
+        {
+            "id": "msg-group-005-1",
+            "group_id": "group-005",
+            "user_id": "user-010",
+            "user_name": "Isabella Lee",
+            "message": "Yes! Need to test my new lens",
+            "timestamp": "2026-02-08T17:05:35.079457"
+        },
+        {
+            "id": "msg-group-005-2",
+            "group_id": "group-005",
+            "user_id": "user-020",
+            "user_name": "Evelyn Young",
+            "message": "What time are we meeting?",
+            "timestamp": "2026-02-08T19:07:35.079457"
+        },
+        {
+            "id": "msg-group-005-3",
+            "group_id": "group-005",
+            "user_id": "community-compass-demo-user",
+            "user_name": "Demo User",
+            "message": "6:30pm at Marina Barrage?",
+            "timestamp": "2026-02-08T21:16:35.079457"
+        },
+        {
+            "id": "msg-group-006-0",
+            "group_id": "group-006",
+            "user_id": "user-002",
+            "user_name": "Olivia Martinez",
+            "message": "This Sunday's session will focus on backbends",
+            "timestamp": "2026-02-08T15:05:35.079457"
+        },
+        {
+            "id": "msg-group-006-1",
+            "group_id": "group-006",
+            "user_id": "user-008",
+            "user_name": "Ava Johnson",
+            "message": "Perfect! Need to work on my flexibility",
+            "timestamp": "2026-02-08T16:47:35.079457"
+        },
+        {
+            "id": "msg-group-006-2",
+            "group_id": "group-006",
+            "user_id": "user-019",
+            "user_name": "Alexander Hall",
+            "message": "Should I bring my own mat?",
+            "timestamp": "2026-02-08T18:49:35.079457"
+        },
+        {
+            "id": "msg-group-006-3",
+            "group_id": "group-006",
+            "user_id": "user-002",
+            "user_name": "Olivia Martinez",
+            "message": "Yes please! And maybe a towel",
+            "timestamp": "2026-02-08T21:05:35.079457"
+        },
+        {
+            "id": "msg-group-007-0",
+            "group_id": "group-007",
+            "user_id": "user-006",
+            "user_name": "Emma Wilson",
+            "message": "Tonight: Catan tournament! 🎲",
+            "timestamp": "2026-02-08T14:47:35.079457"
+        },
+        {
+            "id": "msg-group-007-1",
+            "group_id": "group-007",
+            "user_id": "user-003",
+            "user_name": "James Park",
+            "message": "I call dibs on sheep strategy",
+            "timestamp": "2026-02-08T17:15:35.079457"
+        },
+        {
+            "id": "msg-group-007-2",
+            "group_id": "group-007",
+            "user_id": "user-013",
+            "user_name": "Lucas Miller",
+            "message": "😂 Good luck with that",
+            "timestamp": "2026-02-08T18:49:35.079457"
+        },
+        {
+            "id": "msg-group-008-0",
+            "group_id": "group-008",
+            "user_id": "user-005",
+            "user_name": "Liam Anderson",
+            "message": "10k trail run this Saturday at MacRitchie",
+            "timestamp": "2026-02-08T14:48:35.079457"
+        },
+        {
+            "id": "msg-group-008-1",
+            "group_id": "group-008",
+            "user_id": "user-008",
+            "user_name": "Ava Johnson",
+            "message": "What's the elevation gain?",
+            "timestamp": "2026-02-08T17:11:35.079457"
+        },
+        {
+            "id": "msg-group-008-2",
+            "group_id": "group-008",
+            "user_id": "user-020",
+            "user_name": "Evelyn Young",
+            "message": "Roughly 150m. Not too bad!",
+            "timestamp": "2026-02-08T18:49:35.079457"
+        },
+        {
+            "id": "msg-group-009-0",
+            "group_id": "group-009",
+            "user_id": "user-006",
+            "user_name": "Emma Wilson",
+            "message": "Anyone catch the show at Esplanade last night?",
+            "timestamp": "2026-02-08T14:59:35.079457"
+        },
+        {
+            "id": "msg-group-009-1",
+            "group_id": "group-009",
+            "user_id": "user-010",
+            "user_name": "Isabella Lee",
+            "message": "YES! The opening act was amazing",
+            "timestamp": "2026-02-08T16:49:35.079457"
+        },
+        {
+            "id": "msg-group-009-2",
+            "group_id": "group-009",
+            "user_id": "user-019",
+            "user_name": "Alexander Hall",
+            "message": "Bummed I missed it. Any recordings?",
+            "timestamp": "2026-02-08T18:50:35.079457"
+        },
+        {
+            "id": "msg-group-009-3",
+            "group_id": "group-009",
+            "user_id": "user-012",
+            "user_name": "Mia Rodriguez",
+            "message": "Check their Instagram stories",
+            "timestamp": "2026-02-08T20:50:35.079457"
+        },
+        {
+            "id": "msg-group-010-0",
+            "group_id": "group-010",
+            "user_id": "user-016",
+            "user_name": "Amelia Clark",
+            "message": "Beach cleanup this Sunday at East Coast",
+            "timestamp": "2026-02-08T15:13:35.079457"
+        },
+        {
+            "id": "msg-group-010-1",
+            "group_id": "group-010",
+            "user_id": "user-003",
+            "user_name": "James Park",
+            "message": "Count me in! What should I bring?",
+            "timestamp": "2026-02-08T17:14:35.079457"
+        },
+        {
+            "id": "msg-group-010-2",
+            "group_id": "group-010",
+            "user_id": "community-compass-demo-user",
+            "user_name": "Demo User",
+            "message": "Gloves and reusable bags",
+            "timestamp": "2026-02-08T19:15:35.079457"
+        },
+        {
+            "id": "msg-group-011-0",
+            "group_id": "group-011",
+            "user_id": "user-005",
+            "user_name": "Liam Anderson",
+            "message": "New routes at Climb Central Kallang!",
+            "timestamp": "2026-02-08T15:07:35.079457"
+        },
+        {
+            "id": "msg-group-011-1",
+            "group_id": "group-011",
+            "user_id": "user-020",
+            "user_name": "Evelyn Young",
+            "message": "What grade?",
+            "timestamp": "2026-02-08T17:09:35.079457"
+        },
+        {
+            "id": "msg-group-011-2",
+            "group_id": "group-011",
+            "user_id": "user-015",
+            "user_name": "Aiden Harris",
+            "message": "Saw a 6c that looks challenging",
+            "timestamp": "2026-02-08T19:14:35.079457"
+        },
+        {
+            "id": "msg-group-012-0",
+            "group_id": "group-012",
+            "user_id": "user-012",
+            "user_name": "Mia Rodriguez",
+            "message": "Next month: \"The Midnight Library\"",
+            "timestamp": "2026-02-08T15:03:35.079457"
+        },
+        {
+            "id": "msg-group-012-1",
+            "group_id": "group-012",
+            "user_id": "user-014",
+            "user_name": "Charlotte White",
+            "message": "Love that book! So many emotions",
+            "timestamp": "2026-02-08T16:58:35.079457"
+        },
+        {
+            "id": "msg-group-012-2",
+            "group_id": "group-012",
+            "user_id": "user-002",
+            "user_name": "Olivia Martinez",
+            "message": "Adding to my reading list now",
+            "timestamp": "2026-02-08T18:48:35.079457"
+        },
+        {
+            "id": "msg-group-013-0",
+            "group_id": "group-013",
+            "user_id": "user-001",
+            "user_name": "Marcus Chen",
+            "message": "Gardens by the Bay tomorrow for golden hour?",
+            "timestamp": "2026-02-08T14:52:35.079457"
+        },
+        {
+            "id": "msg-group-013-1",
+            "group_id": "group-013",
+            "user_id": "community-compass-demo-user",
+            "user_name": "Demo User",
+            "message": "Perfect! The supertrees look amazing at sunset",
+            "timestamp": "2026-02-08T16:52:35.079457"
+        },
+        {
+            "id": "msg-group-013-2",
+            "group_id": "group-013",
+            "user_id": "user-004",
+            "user_name": "Sophia Taylor",
+            "message": "I'll bring my tripod",
+            "timestamp": "2026-02-08T19:13:35.079457"
+        },
+        {
+            "id": "msg-group-014-0",
+            "group_id": "group-014",
+            "user_id": "user-011",
+            "user_name": "Mason Davis",
+            "message": "New IPA at Little Island Brewing Co",
+            "timestamp": "2026-02-08T14:54:35.079457"
+        },
+        {
+            "id": "msg-group-014-1",
+            "group_id": "group-014",
+            "user_id": "user-019",
+            "user_name": "Alexander Hall",
+            "message": "How hoppy are we talking?",
+            "timestamp": "2026-02-08T17:09:35.079457"
+        },
+        {
+            "id": "msg-group-014-2",
+            "group_id": "group-014",
+            "user_id": "user-011",
+            "user_name": "Mason Davis",
+            "message": "Very. 70 IBU 🍺",
+            "timestamp": "2026-02-08T19:03:35.079457"
+        },
+        {
+            "id": "msg-group-015-0",
+            "group_id": "group-015",
+            "user_id": "user-015",
+            "user_name": "Aiden Harris",
+            "message": "Tomorrow's session: loving-kindness meditation",
+            "timestamp": "2026-02-08T15:07:35.079457"
+        },
+        {
+            "id": "msg-group-015-1",
+            "group_id": "group-015",
+            "user_id": "user-002",
+            "user_name": "Olivia Martinez",
+            "message": "Beautiful! Just what I need",
+            "timestamp": "2026-02-08T17:10:35.079457"
+        },
+        {
+            "id": "msg-group-015-2",
+            "group_id": "group-015",
+            "user_id": "user-018",
+            "user_name": "Harper Walker",
+            "message": "What time do we start?",
+            "timestamp": "2026-02-08T19:05:35.079457"
+        },
+        {
+            "id": "msg-group-015-3",
+            "group_id": "group-015",
+            "user_id": "user-015",
+            "user_name": "Aiden Harris",
+            "message": "6:30am sharp",
+            "timestamp": "2026-02-08T21:13:35.079457"
+        },
+        {
+            "id": "msg-group-016-0",
+            "group_id": "group-016",
+            "user_id": "user-001",
+            "user_name": "Marcus Chen",
+            "message": "Anyone applying for Antler batch 8?",
+            "timestamp": "2026-02-08T14:52:35.079457"
+        },
+        {
+            "id": "msg-group-016-1",
+            "group_id": "group-016",
+            "user_id": "user-007",
+            "user_name": "Noah Garcia",
+            "message": "Working on my application now",
+            "timestamp": "2026-02-08T16:53:35.079457"
+        },
+        {
+            "id": "msg-group-016-2",
+            "group_id": "group-016",
+            "user_id": "user-013",
+            "user_name": "Lucas Miller",
+            "message": "Already submitted! Fingers crossed 🤞",
+            "timestamp": "2026-02-08T19:06:35.079457"
+        },
+        {
+            "id": "msg-group-016-3",
+            "group_id": "group-016",
+            "user_id": "user-017",
+            "user_name": "Benjamin Lewis",
+            "message": "Let's do a practice pitch session",
+            "timestamp": "2026-02-08T20:51:35.079457"
+        },
+        {
+            "id": "msg-group-017-0",
+            "group_id": "group-017",
+            "user_id": "user-011",
+            "user_name": "Mason Davis",
+            "message": "BBQ this Saturday! Bringing ribs",
+            "timestamp": "2026-02-08T14:51:35.079457"
+        },
+        {
+            "id": "msg-group-017-1",
+            "group_id": "group-017",
+            "user_id": "user-014",
+            "user_name": "Charlotte White",
+            "message": "I'll make potato salad",
+            "timestamp": "2026-02-08T16:46:35.079457"
+        },
+        {
+            "id": "msg-group-018-0",
+            "group_id": "group-018",
+            "user_id": "user-016",
+            "user_name": "Amelia Clark",
+            "message": "Bishan park tomorrow morning?",
+            "timestamp": "2026-02-08T15:01:35.079457"
+        },
+        {
+            "id": "msg-group-018-1",
+            "group_id": "group-018",
+            "user_id": "community-compass-demo-user",
+            "user_name": "Demo User",
+            "message": "Yes! My dog needs to burn some energy",
+            "timestamp": "2026-02-08T16:54:35.079457"
+        },
+        {
+            "id": "msg-group-019-0",
+            "group_id": "group-019",
+            "user_id": "user-008",
+            "user_name": "Ava Johnson",
+            "message": "New choreo this week! 💃",
+            "timestamp": "2026-02-08T15:09:35.079457"
+        },
+        {
+            "id": "msg-group-019-1",
+            "group_id": "group-019",
+            "user_id": "user-018",
+            "user_name": "Harper Walker",
+            "message": "Can't wait! Last week was so fun",
+            "timestamp": "2026-02-08T17:16:35.079457"
+        },
+        {
+            "id": "msg-group-019-2",
+            "group_id": "group-019",
+            "user_id": "user-006",
+            "user_name": "Emma Wilson",
+            "message": "Intensity level?",
+            "timestamp": "2026-02-08T19:12:35.079457"
+        },
+        {
+            "id": "msg-group-019-3",
+            "group_id": "group-019",
+            "user_id": "user-008",
+            "user_name": "Ava Johnson",
+            "message": "High energy! Bring water",
+            "timestamp": "2026-02-08T21:02:35.079457"
+        },
+        {
+            "id": "msg-group-020-0",
+            "group_id": "group-020",
+            "user_id": "user-015",
+            "user_name": "Aiden Harris",
+            "message": "This week: \"Everything Everywhere All at Once\"",
+            "timestamp": "2026-02-08T14:46:35.079457"
+        },
+        {
+            "id": "msg-group-020-1",
+            "group_id": "group-020",
+            "user_id": "user-018",
+            "user_name": "Harper Walker",
+            "message": "Such a masterpiece",
+            "timestamp": "2026-02-08T17:05:35.079457"
+        },
+        {
+            "id": "msg-group-020-2",
+            "group_id": "group-020",
+            "user_id": "user-003",
+            "user_name": "James Park",
+            "message": "Discussion topics?",
+            "timestamp": "2026-02-08T18:51:35.079457"
+        },
+        {
+            "id": "msg-group-020-3",
+            "group_id": "group-020",
+            "user_id": "user-015",
+            "user_name": "Aiden Harris",
+            "message": "Multiverse theory and family dynamics",
+            "timestamp": "2026-02-08T21:08:35.079457"
         }
     ]
 }
