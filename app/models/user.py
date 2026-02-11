@@ -10,7 +10,8 @@ class UserBase(BaseModel):
     location: str
 
 class UserCreate(UserBase):
-    pass
+    id: Optional[str] = None
 
 class User(UserBase):
     id: str = Field(default_factory=lambda: str(uuid4()))
+    liked_by: List[str] = [] # List of user_ids who liked this user

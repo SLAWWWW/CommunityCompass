@@ -1,14 +1,26 @@
+<<<<<<< HEAD
 import { useEffect, useMemo, useRef, useState } from 'react';
+=======
+import { useRef, useMemo, useState, useEffect } from 'react';
+>>>>>>> main
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Sphere, Line, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { api } from '@/lib/api';
+<<<<<<< HEAD
 import type { Group, GroupRecommendation } from '@/types';
+=======
+import type { Group } from '@/types';
+>>>>>>> main
 
 const GLOBE_RADIUS = 2;
 const NODE_COUNT = 60;
 const CONNECTION_DISTANCE = 1.2;
+const DRAG_SENSITIVITY = 0.004;
+const NODE_RADIUS = 0.04;
+const NODE_HOVER_SCALE = 1.8;
 
+<<<<<<< HEAD
 const DRAG_SENSITIVITY = 0.004;
 const NODE_RADIUS = 0.04;
 const NODE_HIT_RADIUS = 0.13; // larger hover range
@@ -20,6 +32,18 @@ function Nodes({
 }: {
   groups: Group[];
   recommendedGroupIds: Set<string>;
+=======
+function Nodes({
+  groups,
+  hoveredNodeIndex,
+  setHoveredNodeIndex,
+  isDraggingRef,
+}: {
+  groups: Group[];
+  hoveredNodeIndex: number | null;
+  setHoveredNodeIndex: (i: number | null) => void;
+  isDraggingRef: React.MutableRefObject<boolean>;
+>>>>>>> main
 }) {
   const points = useMemo(() => {
     const temp: THREE.Vector3[] = [];
@@ -46,7 +70,10 @@ function Nodes({
     return lines;
   }, [points]);
 
+<<<<<<< HEAD
   // One (random) room per dot, stable for this session.
+=======
+>>>>>>> main
   const liveGroups = useMemo(
     () => groups.filter((g) => g.members.length < g.max_members),
     [groups]
@@ -58,8 +85,11 @@ function Nodes({
       shuffled[nodeIndex % shuffled.length] ?? null;
   }, [liveGroups]);
 
+<<<<<<< HEAD
   const [hoveredNodeIndex, setHoveredNodeIndex] = useState<number | null>(null);
 
+=======
+>>>>>>> main
   const groupRef = useRef<THREE.Group>(null);
   const rotationX = useRef(0);
   const rotationY = useRef(0);
@@ -69,19 +99,31 @@ function Nodes({
   useEffect(() => {
     const onPointerMove = (e: PointerEvent) => {
       if (!pointerDownRef.current || !groupRef.current) return;
+<<<<<<< HEAD
+=======
+      isDraggingRef.current = true;
+>>>>>>> main
       const dx = e.clientX - lastPointer.current.x;
       const dy = e.clientY - lastPointer.current.y;
       rotationY.current += dx * DRAG_SENSITIVITY;
       rotationX.current += dy * DRAG_SENSITIVITY;
+<<<<<<< HEAD
       rotationX.current = THREE.MathUtils.clamp(
         rotationX.current,
         -Math.PI / 2 + 0.1,
         Math.PI / 2 - 0.1
       );
+=======
+      rotationX.current = THREE.MathUtils.clamp(rotationX.current, -Math.PI / 2 + 0.1, Math.PI / 2 - 0.1);
+>>>>>>> main
       lastPointer.current = { x: e.clientX, y: e.clientY };
     };
     const onPointerUp = () => {
       pointerDownRef.current = false;
+<<<<<<< HEAD
+=======
+      isDraggingRef.current = false;
+>>>>>>> main
     };
     window.addEventListener('pointermove', onPointerMove);
     window.addEventListener('pointerup', onPointerUp);
@@ -91,11 +133,18 @@ function Nodes({
       window.removeEventListener('pointerup', onPointerUp);
       window.removeEventListener('pointerleave', onPointerUp);
     };
+<<<<<<< HEAD
   }, []);
 
   useFrame(() => {
     if (!groupRef.current) return;
     // No auto movement at all; only drag updates these refs.
+=======
+  }, [isDraggingRef]);
+
+  useFrame(() => {
+    if (!groupRef.current) return;
+>>>>>>> main
     groupRef.current.rotation.x = rotationX.current;
     groupRef.current.rotation.y = rotationY.current;
   });
@@ -108,6 +157,7 @@ function Nodes({
 
   const hoveredPoint = hoveredNodeIndex !== null ? points[hoveredNodeIndex] : null;
   const hoveredGroup = hoveredNodeIndex !== null ? groupPerNode(hoveredNodeIndex) : null;
+<<<<<<< HEAD
   const hoveredTooltipPos = useMemo(() => {
     if (hoveredPoint === null) return null;
     // Nudge outward + sideways so the card is beside the dot (not covering it).
@@ -119,6 +169,12 @@ function Nodes({
   return (
     <group ref={groupRef}>
       {/* Invisible drag surface */} 
+=======
+
+  return (
+    <group ref={groupRef}>
+      {/* Invisible drag surface */}
+>>>>>>> main
       <mesh onPointerDown={handlePointerDown}>
         <sphereGeometry args={[GLOBE_RADIUS + 0.2, 32, 32]} />
         <meshBasicMaterial visible={false} />
@@ -135,6 +191,7 @@ function Nodes({
         />
       </Sphere>
 
+<<<<<<< HEAD
       {/* Nodes */}
       {points.map((point, i) => {
         const assigned = groupPerNode(i);
@@ -168,6 +225,28 @@ function Nodes({
           </group>
         );
       })}
+=======
+      {/* Nodes — scale up when hovered */}
+      {points.map((point, i) => (
+        <mesh
+          key={i}
+          position={point}
+          scale={hoveredNodeIndex === i ? NODE_HOVER_SCALE : 1}
+          onPointerOver={(e) => {
+            e.stopPropagation();
+            document.body.style.cursor = 'pointer';
+            setHoveredNodeIndex(i);
+          }}
+          onPointerOut={() => {
+            document.body.style.cursor = 'auto';
+            setHoveredNodeIndex(null);
+          }}
+        >
+          <sphereGeometry args={[NODE_RADIUS, 16, 16]} />
+          <meshBasicMaterial color={i % 5 === 0 ? '#FF8800' : '#00CCFF'} />
+        </mesh>
+      ))}
+>>>>>>> main
 
       {/* Connections */}
       {connections.map((line, i) => (
@@ -181,9 +260,15 @@ function Nodes({
         />
       ))}
 
+<<<<<<< HEAD
       {/* Hover: single live room for this node (beside the dot) */}
       {hoveredTooltipPos !== null && (
         <Html position={hoveredTooltipPos} center distanceFactor={8}>
+=======
+      {/* Hover: single live room for this node */}
+      {hoveredPoint !== null && (
+        <Html position={hoveredPoint} center distanceFactor={8}>
+>>>>>>> main
           <div className="pointer-events-none min-w-[180px] rounded-lg border border-primary/40 bg-black/80 px-3 py-2 shadow-xl backdrop-blur-sm">
             <div className="text-xs font-semibold uppercase tracking-wider text-primary">Live room</div>
             {hoveredGroup === null ? (
@@ -202,11 +287,17 @@ function Nodes({
 
 export default function Globe() {
   const [groups, setGroups] = useState<Group[]>([]);
+<<<<<<< HEAD
   const [recommendedGroupIds, setRecommendedGroupIds] = useState<Set<string>>(new Set());
+=======
+  const [hoveredNodeIndex, setHoveredNodeIndex] = useState<number | null>(null);
+  const isDraggingRef = useRef(false);
+>>>>>>> main
 
   useEffect(() => {
     const load = async () => {
       try {
+<<<<<<< HEAD
         const [groupsRes, recRes] = await Promise.all([
           api.get<Group[]>('/api/v1/groups/'),
           api.get<GroupRecommendation[]>('/api/v1/groups/recommended', { params: { limit: 12 } }),
@@ -223,6 +314,12 @@ export default function Globe() {
       } catch {
         setGroups([]);
         setRecommendedGroupIds(new Set());
+=======
+        const res = await api.get<Group[]>('/api/v1/groups/');
+        setGroups(res.data ?? []);
+      } catch {
+        setGroups([]);
+>>>>>>> main
       }
     };
     load();
@@ -234,7 +331,16 @@ export default function Globe() {
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} color="#00CCFF" />
         <pointLight position={[-10, -10, -10]} intensity={0.5} color="#FF8800" />
+<<<<<<< HEAD
         <Nodes groups={groups} recommendedGroupIds={recommendedGroupIds} />
+=======
+        <Nodes
+          groups={groups}
+          hoveredNodeIndex={hoveredNodeIndex}
+          setHoveredNodeIndex={setHoveredNodeIndex}
+          isDraggingRef={isDraggingRef}
+        />
+>>>>>>> main
       </Canvas>
     </div>
   );
