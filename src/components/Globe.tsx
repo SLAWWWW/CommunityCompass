@@ -3,22 +3,25 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Sphere, Line, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { api } from '@/lib/api';
-import type { Group } from '@/types';
+import type { Group, GroupRecommendation } from '@/types';
 
 const GLOBE_RADIUS = 2;
 const NODE_COUNT = 60;
 const CONNECTION_DISTANCE = 1.2;
 const DRAG_SENSITIVITY = 0.004;
 const NODE_RADIUS = 0.04;
+const NODE_HIT_RADIUS = 0.13; // larger hover range to avoid flicker
 const NODE_HOVER_SCALE = 1.8;
 
 function Nodes({
   groups,
+  recommendedGroupIds,
   hoveredNodeIndex,
   setHoveredNodeIndex,
   isDraggingRef,
 }: {
   groups: Group[];
+  recommendedGroupIds: Set<string>;
   hoveredNodeIndex: number | null;
   setHoveredNodeIndex: (i: number | null) => void;
   isDraggingRef: React.MutableRefObject<boolean>;
@@ -124,26 +127,35 @@ function Nodes({
         />
       </Sphere>
 
-      {/* Nodes — scale up when hovered */}
-      {points.map((point, i) => (
-        <mesh
-          key={i}
-          position={point}
-          scale={hoveredNodeIndex === i ? NODE_HOVER_SCALE : 1}
-          onPointerOver={(e) => {
-            e.stopPropagation();
-            document.body.style.cursor = 'pointer';
-            setHoveredNodeIndex(i);
-          }}
-          onPointerOut={() => {
-            document.body.style.cursor = 'auto';
-            setHoveredNodeIndex(null);
-          }}
-        >
-          <sphereGeometry args={[NODE_RADIUS, 16, 16]} />
-          <meshBasicMaterial color={i % 5 === 0 ? '#FF8800' : '#00CCFF'} />
-        </mesh>
-      ))}
+      {/* Nodes — larger invisible hover target + visual dot */} 
+      {points.map((point, i) => {
+        const assigned = groupPerNode(i);
+        const isRecommended = assigned ? recommendedGroupIds.has(assigned.id) : false;
+        const dotColor = isRecommended ? '#FF8800' : '#00CCFF';
+        const isHovered = hoveredNodeIndex === i;
+        return (
+          <group key={i} position={point}>
+            <mesh
+              onPointerOver={(e) => {
+                e.stopPropagation();
+                document.body.style.cursor = 'pointer';
+                setHoveredNodeIndex(i);
+              }}
+              onPointerOut={() => {
+                document.body.style.cursor = 'auto';
+                setHoveredNodeIndex(null);
+              }}
+            >
+              <sphereGeometry args={[NODE_HIT_RADIUS, 16, 16]} />
+              <meshBasicMaterial transparent opacity={0} />
+            </mesh>
+            <mesh scale={isHovered ? NODE_HOVER_SCALE : 1}>
+              <sphereGeometry args={[NODE_RADIUS, 16, 16]} />
+              <meshBasicMaterial color={dotColor} />
+            </mesh>
+          </group>
+        );
+      })}
 
       {/* Connections */}
       {connections.map((line, i) => (
@@ -159,7 +171,12 @@ function Nodes({
 
       {/* Hover: single live room for this node */}
       {hoveredPoint !== null && (
-        <Html position={hoveredPoint} center distanceFactor={8}>
+        <Html
+          position={hoveredPoint}
+          center
+          distanceFactor={8}
+          style={{ transform: 'translate(28px, -22px)' }}
+        >
           <div className="pointer-events-none min-w-[180px] rounded-lg border border-primary/40 bg-black/80 px-3 py-2 shadow-xl backdrop-blur-sm">
             <div className="text-xs font-semibold uppercase tracking-wider text-primary">Live room</div>
             {hoveredGroup === null ? (
@@ -180,14 +197,26 @@ export default function Globe() {
   const [groups, setGroups] = useState<Group[]>([]);
   const [hoveredNodeIndex, setHoveredNodeIndex] = useState<number | null>(null);
   const isDraggingRef = useRef(false);
+  const [recommendedGroupIds, setRecommendedGroupIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await api.get<Group[]>('/api/v1/groups/');
-        setGroups(res.data ?? []);
+        const [groupsRes, recRes] = await Promise.all([
+          api.get<Group[]>('/api/v1/groups/'),
+          api.get<GroupRecommendation[]>('/api/v1/groups/recommended', { params: { limit: 12 } }),
+        ]);
+        setGroups(groupsRes.data ?? []);
+        const ids = new Set<string>(
+          (recRes.data ?? [])
+            .slice()
+            .sort((a, b) => (b.relevance_score ?? 0) - (a.relevance_score ?? 0))
+            .map((g) => g.id)
+        );
+        setRecommendedGroupIds(ids);
       } catch {
         setGroups([]);
+        setRecommendedGroupIds(new Set());
       }
     };
     load();
@@ -201,6 +230,7 @@ export default function Globe() {
         <pointLight position={[-10, -10, -10]} intensity={0.5} color="#FF8800" />
         <Nodes
           groups={groups}
+          recommendedGroupIds={recommendedGroupIds}
           hoveredNodeIndex={hoveredNodeIndex}
           setHoveredNodeIndex={setHoveredNodeIndex}
           isDraggingRef={isDraggingRef}
