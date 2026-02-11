@@ -25,6 +25,12 @@ Run the server with auto-reload:
 uvicorn app.main:app --reload
 ```
 
+
+run frontend:
+```bash
+npm run dev
+```
+
 ## API Documentation
 
 Once running, access the interactive API docs at:
