@@ -24,6 +24,62 @@
             "location": "East",
             "id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40",
             "liked_by": []
+        },
+        {
+            "name": "Sarah Kim",
+            "email": "sarah@example.com",
+            "age": 23,
+            "interests": [
+                "Coding",
+                "Gaming",
+                "Photography"
+            ],
+            "location": "San Francisco, CA",
+            "id": "99efa34f-81f5-428e-b5dc-d2b2f0b9af51",
+            "liked_by": [
+                "community-compass-demo-user"
+            ]
+        },
+        {
+            "name": "Sarah Kim",
+            "email": "sarah@test.com",
+            "age": 23,
+            "interests": [
+                "Coding",
+                "Gaming",
+                "Photography"
+            ],
+            "location": "San Francisco, CA",
+            "id": "52f8d44b-37c8-474f-813d-2c3258a6f6f7",
+            "liked_by": []
+        },
+        {
+            "name": "John Rivera",
+            "email": "john@test.com",
+            "age": 27,
+            "interests": [
+                "Hiking",
+                "Music",
+                "Travel"
+            ],
+            "location": "Los Angeles, CA",
+            "id": "5938e0e6-6d18-4d91-aacb-79c7d60fa907",
+            "liked_by": []
+        },
+        {
+            "name": "Elena Vasquez",
+            "email": "elena@test.com",
+            "age": 22,
+            "interests": [
+                "Reading",
+                "Coding",
+                "Art"
+            ],
+            "location": "New York, NY",
+            "id": "b0946a1e-c308-4458-a9a5-a58c54ecc242",
+            "liked_by": [
+                "community-compass-demo-user"
+            ]
         }
     ],
     "groups": [
