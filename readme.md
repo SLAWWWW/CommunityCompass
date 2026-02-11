@@ -15,6 +15,7 @@ social connectedness platform leveraging semantic similarity algorithm to connec
 3.  Install dependencies:
     ```bash
     pip install -r requirements.txt
+    npm install
     ```
 
 ## Running the Server

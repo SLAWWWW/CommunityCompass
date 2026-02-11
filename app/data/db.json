@@ -166,7 +166,9 @@
             ],
             "location": "Tiong Bahru",
             "id": "user-010",
-            "liked_by": []
+            "liked_by": [
+                "community-compass-demo-user"
+            ]
         },
         {
             "name": "Mason Davis",
@@ -375,7 +377,6 @@
             "id": "group-003",
             "members": [
                 "user-009",
-                "community-compass-demo-user",
                 "user-018"
             ],
             "admin_id": "user-009"
@@ -532,7 +533,8 @@
             "members": [
                 "user-005",
                 "user-020",
-                "user-015"
+                "user-015",
+                "community-compass-demo-user"
             ],
             "admin_id": "user-005"
         },
@@ -704,6 +706,24 @@
                 "user-003"
             ],
             "admin_id": "user-003"
+        },
+        {
+            "name": "abcdef",
+            "description": "abcdefg",
+            "activity": [
+                "photography",
+                "wildlife",
+                "hiking",
+                "nature"
+            ],
+            "location": "kranji",
+            "max_members": 10,
+            "age_group": "All Ages",
+            "id": "3b2e33b2-f81f-48ce-93a5-3512283f7842",
+            "members": [
+                "community-compass-demo-user"
+            ],
+            "admin_id": "community-compass-demo-user"
         }
     ],
     "messages": [
@@ -744,7 +764,7 @@
             "group_id": "group-002",
             "user_id": "user-004",
             "user_name": "Sophia Taylor",
-            "message": "Just tried the new espresso at Tiong Bahru Bakery 😍",
+            "message": "Just tried the new espresso at Tiong Bahru Bakery \ud83d\ude0d",
             "timestamp": "2026-02-08T14:50:35.079457"
         },
         {
@@ -776,7 +796,7 @@
             "group_id": "group-003",
             "user_id": "community-compass-demo-user",
             "user_name": "Demo User",
-            "message": "I'm in! 🏐",
+            "message": "I'm in! \ud83c\udfd0",
             "timestamp": "2026-02-08T17:06:35.079457"
         },
         {
@@ -896,7 +916,7 @@
             "group_id": "group-007",
             "user_id": "user-006",
             "user_name": "Emma Wilson",
-            "message": "Tonight: Catan tournament! 🎲",
+            "message": "Tonight: Catan tournament! \ud83c\udfb2",
             "timestamp": "2026-02-08T14:47:35.079457"
         },
         {
@@ -912,7 +932,7 @@
             "group_id": "group-007",
             "user_id": "user-013",
             "user_name": "Lucas Miller",
-            "message": "😂 Good luck with that",
+            "message": "\ud83d\ude02 Good luck with that",
             "timestamp": "2026-02-08T18:49:35.079457"
         },
         {
@@ -1088,7 +1108,7 @@
             "group_id": "group-014",
             "user_id": "user-011",
             "user_name": "Mason Davis",
-            "message": "Very. 70 IBU 🍺",
+            "message": "Very. 70 IBU \ud83c\udf7a",
             "timestamp": "2026-02-08T19:03:35.079457"
         },
         {
@@ -1144,7 +1164,7 @@
             "group_id": "group-016",
             "user_id": "user-013",
             "user_name": "Lucas Miller",
-            "message": "Already submitted! Fingers crossed 🤞",
+            "message": "Already submitted! Fingers crossed \ud83e\udd1e",
             "timestamp": "2026-02-08T19:06:35.079457"
         },
         {
@@ -1192,7 +1212,7 @@
             "group_id": "group-019",
             "user_id": "user-008",
             "user_name": "Ava Johnson",
-            "message": "New choreo this week! 💃",
+            "message": "New choreo this week! \ud83d\udc83",
             "timestamp": "2026-02-08T15:09:35.079457"
         },
         {
@@ -1250,6 +1270,14 @@
             "user_name": "Aiden Harris",
             "message": "Multiverse theory and family dynamics",
             "timestamp": "2026-02-08T21:08:35.079457"
+        },
+        {
+            "id": "msg-1770793093.196207",
+            "group_id": "group-011",
+            "user_id": "community-compass-demo-user",
+            "user_name": "Demo User",
+            "message": "hello!",
+            "timestamp": "2026-02-11T14:58:13.196207"
         }
     ]
 }
