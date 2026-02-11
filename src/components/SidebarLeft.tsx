@@ -11,14 +11,17 @@ import type { User } from "@/types";
 import { api } from "@/lib/api";
 import { DEMO_USER_ID } from "@/lib/constants";
 import { toast } from "sonner";
-
-const avatarPool = [avatar1, avatar2, avatar3, avatar4];
+import { Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { AvatarImage } from "@/components/ui/avatar";
 
 export default function SidebarLeft() {
   const [user, setUser] = useState<User | null>(null);
   const [allUsers, setAllUsers] = useState<User[]>([]);
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [groupsJoined, setGroupsJoined] = useState<number>(0);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [likingUserId, setLikingUserId] = useState<string | null>(null);
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -45,6 +48,16 @@ export default function SidebarLeft() {
       }
     };
     fetchGroups();
+
+    const fetchAllUsers = async () => {
+      try {
+        const response = await api.get<User[]>("/api/v1/users/");
+        setAllUsers(response.data);
+      } catch (error) {
+        console.error("Failed to fetch users:", error);
+      }
+    };
+    fetchAllUsers();
   }, []);
 
   const otherUsers = useMemo(() => {
@@ -73,7 +86,9 @@ export default function SidebarLeft() {
     try {
       await api.post(`/api/v1/users/${targetId}/like`);
       toast.success("Liked!");
-      await fetchAllUsers();
+      // Refresh users list
+      const response = await api.get<User[]>("/api/v1/users/");
+      setAllUsers(response.data);
     } catch (error: any) {
       toast.error(error.response?.data?.detail || "Failed to like user");
     } finally {
@@ -87,7 +102,9 @@ export default function SidebarLeft() {
     try {
       await api.post(`/api/v1/users/${targetId}/unlike`);
       toast.success("Unliked");
-      await fetchAllUsers();
+      // Refresh users list
+      const response = await api.get<User[]>("/api/v1/users/");
+      setAllUsers(response.data);
     } catch (error: any) {
       toast.error(error.response?.data?.detail || "Failed to unlike user");
     } finally {
@@ -166,99 +183,89 @@ export default function SidebarLeft() {
             <span className="text-[10px] text-primary font-bold">{otherUsers.length} member{otherUsers.length !== 1 ? "s" : ""}</span>
           </div>
         </CardHeader>
-        <CardContent className="flex-1 flex flex-col min-h-0 gap-3 overflow-hidden">
-          <div className="relative shrink-0">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Search by name, location, interest..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-8 glass-input rounded-full h-9 border-none focus-visible:ring-1 focus-visible:ring-primary text-xs"
-            />
-          </div>
-
-          <ScrollArea className="flex-1 pr-4">
-            <div className="space-y-3 mt-2">
-              {friends.map((friend, i) => (
-                <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group">
-                  <Avatar className="h-9 w-9 border border-white/10 group-hover:border-primary/50 transition-colors">
-                    <AvatarFallback className="bg-muted text-muted-foreground">
-                      <UserIcon className="h-4 w-4" />
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1 overflow-hidden">
-                    <div className="text-sm font-medium truncate group-hover:text-primary transition-colors">{friend.name}</div>
-                    <div className="text-xs text-muted-foreground flex items-center gap-1">
-                      <span className={`w-1.5 h-1.5 rounded-full ${friend.status === 'Online' ? 'bg-green-500 shadow-[0_0_5px_theme(colors.green.500)]' : 'bg-yellow-500'}`} />
-                      {friend.status}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                filteredUsers.map((friend, i) => {
-                  const liked = hasLiked(friend);
-              const shared = getSharedInterests(friend);
-              const avatarSrc = avatarPool[i % avatarPool.length];
-
-              return (
-              <div
-                key={friend.id}
-                className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-white/5 transition-all cursor-pointer group border border-transparent hover:border-white/10"
-              >
-                <Avatar className="h-9 w-9 border border-white/10 group-hover:border-primary/50 transition-colors mt-0.5">
-                  <AvatarImage src={avatarSrc} />
-                  <AvatarFallback>{friend.name.slice(0, 2).toUpperCase()}</AvatarFallback>
-                </Avatar>
-                <div className="flex-1 overflow-hidden min-w-0">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="text-sm font-medium truncate group-hover:text-primary transition-colors">
-                      {friend.name}
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className={`h-6 w-6 p-0 shrink-0 transition-all ${liked
-                        ? "text-red-400 hover:text-red-300 hover:bg-red-500/10"
-                        : "text-muted-foreground hover:text-primary hover:bg-primary/10 opacity-0 group-hover:opacity-100"
-                        }`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        liked ? handleUnlike(friend.id) : handleLike(friend.id);
-                      }}
-                      disabled={likingUserId === friend.id}
-                    >
-                      <Heart
-                        size={14}
-                        fill={liked ? "currentColor" : "none"}
-                        className={likingUserId === friend.id ? "animate-pulse" : ""}
-                      />
-                    </Button>
-                  </div>
-                  <div className="text-[11px] text-muted-foreground/70 flex items-center gap-1">
-                    {friend.location}
-                  </div>
-                  {shared.length > 0 && (
-                    <div className="flex flex-wrap gap-1 mt-1.5">
-                      {shared.slice(0, 3).map(interest => (
-                        <Badge
-                          key={interest}
-                          className="text-[9px] h-4 px-1.5 bg-primary/10 text-primary border-primary/20 font-normal"
-                        >
-                          {interest}
-                        </Badge>
-                      ))}
-                      {shared.length > 3 && (
-                        <span className="text-[9px] text-muted-foreground/50">+{shared.length - 3}</span>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-              );
-                })
-              )}
+        <CardContent className="flex-1 overflow-hidden p-4">
+          <div className="flex flex-col gap-3 h-full">
+            <div className="relative shrink-0">
+              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Input
+                type="search"
+                placeholder="Search by name, location, interest..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-8 glass-input rounded-full h-9 border-none focus-visible:ring-1 focus-visible:ring-primary text-xs"
+              />
             </div>
+
+            <ScrollArea className="flex-1 min-h-0">
+              <div className="space-y-3 pr-4">
+                {filteredUsers.length === 0 ? (
+                  <div className="text-center py-8 text-xs text-muted-foreground">
+                    No members found
+                  </div>
+                ) : (
+                  filteredUsers.map((member) => {
+                    const liked = hasLiked(member);
+                    const shared = getSharedInterests(member);
+
+                    return (
+                      <div
+                        key={member.id}
+                        className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-white/5 transition-all cursor-pointer group border border-transparent hover:border-white/10"
+                        onClick={() => window.location.hash = `/profile/${member.id}`}
+                      >
+                        <Avatar className="h-9 w-9 border border-white/10 group-hover:border-primary/50 transition-colors mt-0.5">
+                          <AvatarFallback>{member.name.slice(0, 2).toUpperCase()}</AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1 overflow-hidden min-w-0">
+                          <div className="flex items-center justify-between gap-2">
+                            <div className="text-sm font-medium truncate group-hover:text-primary transition-colors">
+                              {member.name}
+                            </div>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className={`h-6 w-6 p-0 shrink-0 transition-all ${liked
+                                ? "text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                                : "text-muted-foreground hover:text-primary hover:bg-primary/10 opacity-0 group-hover:opacity-100"
+                                }`}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                liked ? handleUnlike(member.id) : handleLike(member.id);
+                              }}
+                              disabled={likingUserId === member.id}
+                            >
+                              <Heart
+                                size={14}
+                                fill={liked ? "currentColor" : "none"}
+                                className={likingUserId === member.id ? "animate-pulse" : ""}
+                              />
+                            </Button>
+                          </div>
+                          <div className="text-[11px] text-muted-foreground/70 flex items-center gap-1">
+                            {member.location}
+                          </div>
+                          {shared.length > 0 && (
+                            <div className="flex flex-wrap gap-1 mt-1.5">
+                              {shared.slice(0, 3).map(interest => (
+                                <Badge
+                                  key={interest}
+                                  className="text-[9px] h-4 px-1.5 bg-primary/10 text-primary border-primary/20 font-normal"
+                                >
+                                  {interest}
+                                </Badge>
+                              ))}
+                              {shared.length > 3 && (
+                                <span className="text-[9px] text-muted-foreground/50">+{shared.length - 3}</span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            </ScrollArea>
           </div>
         </CardContent>
       </Card >

@@ -84,21 +84,6 @@
     ],
     "groups": [
         {
-            "name": "hiking",
-            "description": "-",
-            "activity": [
-                "Hiking"
-            ],
-            "location": "North-East",
-            "max_members": 10,
-            "age_group": "All Ages",
-            "id": "5bc24109-ee72-4689-b99d-50d84707099b",
-            "members": [
-                "community-compass-demo-user"
-            ],
-            "admin_id": "community-compass-demo-user"
-        },
-        {
             "name": "tennis",
             "description": "-",
             "activity": [
