@@ -12,7 +12,7 @@ export interface Group {
     id: string;
     name: string;
     description: string;
-    activity: string;
+    activity: string[];  // Changed from string to string[]
     location: string;
     max_members: number;
     age_group: string;
@@ -22,5 +22,9 @@ export interface Group {
 
 export interface GroupRecommendation extends Group {
     relevance_score: number;
-    score_breakdown: Record<string, any>;
+    score_breakdown: {
+        semantic: number;
+        location: number;
+        age: number;
+    };
 }

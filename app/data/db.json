@@ -5,25 +5,24 @@
             "email": "demo@example.com",
             "age": 25,
             "interests": [
-                "Coding",
+                "Landscape Photography",
                 "Hiking",
-                "Reading"
+                "Nature",
+                "Wildlife"
             ],
-            "location": "San Francisco, CA",
+            "location": "Central",
             "id": "community-compass-demo-user",
             "liked_by": []
         },
         {
-            "name": "Demo User",
-            "email": "demo@example.com",
-            "age": 25,
+            "name": "edward",
+            "email": "e@e.com",
+            "age": 18,
             "interests": [
-                "Coding",
-                "Hiking",
-                "Reading"
+                "swimming"
             ],
-            "location": "San Francisco, CA",
-            "id": "community-compass-demo-user",
+            "location": "East",
+            "id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40",
             "liked_by": []
         },
         {
@@ -85,30 +84,109 @@
     ],
     "groups": [
         {
-            "name": "a",
-            "description": "a",
-            "activity": "Sports",
-            "location": "ak",
+            "name": "hiking",
+            "description": "-",
+            "activity": [
+                "Hiking"
+            ],
+            "location": "North-East",
             "max_members": 10,
             "age_group": "All Ages",
-            "id": "ea1078d6-b030-4908-959c-7b32da890ead",
+            "id": "5bc24109-ee72-4689-b99d-50d84707099b",
             "members": [
                 "community-compass-demo-user"
             ],
             "admin_id": "community-compass-demo-user"
         },
         {
-            "name": "abc",
-            "description": "a",
-            "activity": "Gaming",
-            "location": "a",
+            "name": "tennis",
+            "description": "-",
+            "activity": [
+                "Tennis"
+            ],
+            "location": "East",
             "max_members": 10,
             "age_group": "All Ages",
-            "id": "ffc7e312-d22d-45cd-9b26-224a669d3c2e",
+            "id": "tennis-group-unique-id-456",
             "members": [
+                "7fc83204-2a12-4cb3-8f1f-a3115cb64e40",
                 "community-compass-demo-user"
             ],
-            "admin_id": "community-compass-demo-user"
+            "admin_id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
+        },
+        {
+            "name": "Beach Volleyball Enthusiasts",
+            "description": "Weekly beach volleyball games, all skill levels welcome!",
+            "activity": [
+                "volleyball",
+                "beach",
+                "sports",
+                "outdoor"
+            ],
+            "location": "East",
+            "max_members": 12,
+            "age_group": "18-35",
+            "id": "beach-vball-001",
+            "members": [
+                "7fc83204-2a12-4cb3-8f1f-a3115cb64e40",
+                "community-compass-demo-user"
+            ],
+            "admin_id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
+        },
+        {
+            "name": "Photography Walkers",
+            "description": "Explore the city with your camera. Street photography and urban exploration.",
+            "activity": [
+                "photography",
+                "walking",
+                "urban",
+                "creative"
+            ],
+            "location": "Central",
+            "max_members": 8,
+            "age_group": "All Ages",
+            "id": "photo-walk-002",
+            "members": [
+                "7fc83204-2a12-4cb3-8f1f-a3115cb64e40",
+                "community-compass-demo-user"
+            ],
+            "admin_id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
+        },
+        {
+            "name": "Board Game Night",
+            "description": "Strategy games, party games, and everything in between. BYOB!",
+            "activity": [
+                "board games",
+                "social",
+                "indoor",
+                "strategy"
+            ],
+            "location": "West",
+            "max_members": 6,
+            "age_group": "21+",
+            "id": "boardgame-003",
+            "members": [
+                "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
+            ],
+            "admin_id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
+        },
+        {
+            "name": "Morning Swimmers",
+            "description": "Early morning lap swimming at public pool. Fitness focused.",
+            "activity": [
+                "swimming",
+                "fitness",
+                "morning",
+                "health"
+            ],
+            "location": "North",
+            "max_members": 5,
+            "age_group": "18+",
+            "id": "swim-morning-004",
+            "members": [
+                "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
+            ],
+            "admin_id": "7fc83204-2a12-4cb3-8f1f-a3115cb64e40"
         }
     ]
 }

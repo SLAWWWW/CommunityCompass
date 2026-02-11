@@ -102,4 +102,28 @@
   .border-glow {
     box-shadow: 0 0 15px -3px var(--color-primary);
   }
+
+  .hud-panel {
+    @apply bg-[#101827]/80 backdrop-blur-xl border border-[#00CCFF]/20 shadow-[0_0_20px_rgba(0,204,255,0.1)];
+  }
+}
+
+@theme inline {
+  --font-orbitron: "Orbitron", sans-serif;
+  --color-hud-bg: oklch(0.12 0.05 260);
+  --color-hud-card: oklch(0.15 0.05 260 / 0.8);
+  --color-hud-cyan: oklch(0.78 0.18 230);
+  --color-hud-blue: oklch(0.65 0.25 260);
+  --animate-flicker: flicker 2s linear infinite;
+}
+
+@keyframes flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 0.99;
+    text-shadow: 0 0 10px rgba(0, 204, 255, 0.8), 0 0 20px rgba(0, 204, 255, 0.4);
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
 }

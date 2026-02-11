@@ -6,6 +6,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Home from "@/pages/Home";
 import Groups from "@/pages/Groups";
+import WaitingRoom from "@/pages/WaitingRoom";
 
 // Use hash-based routing (/#/) to support opening index.html directly via file:// protocol
 // Tolerant routing: unmatched paths are treated as anchor sections (e.g., /#/services → scroll to #services)
@@ -15,6 +16,7 @@ function AppRouter() {
     <Router hook={useHashLocation}>
       <Switch>
         {/* Add explicit routes here, e.g.: <Route path="/login" component={LoginPage} /> */}
+        <Route path="/waiting-room/:groupId" component={WaitingRoom} />
         <Route path="/groups" component={Groups} />
         <Route path="/:section?">{(params) => <Home targetSection={params.section} />}</Route>
       </Switch>

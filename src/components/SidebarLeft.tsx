@@ -1,15 +1,10 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Search, ThumbsUp, Users, Heart } from "lucide-react";
+import { Search, ThumbsUp, User as UserIcon, Users } from "lucide-react";
 import { Link } from "wouter";
-import avatar1 from "@/assets/avatars/avatar1.jpg";
-import avatar2 from "@/assets/avatars/avatar2.jpg";
-import avatar3 from "@/assets/avatars/avatar3.jpg";
-import avatar4 from "@/assets/avatars/avatar4.jpg";
 
 import { useEffect, useState, useMemo } from "react";
 import type { User } from "@/types";
@@ -23,31 +18,33 @@ export default function SidebarLeft() {
   const [user, setUser] = useState<User | null>(null);
   const [allUsers, setAllUsers] = useState<User[]>([]);
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [likingUserId, setLikingUserId] = useState<string | null>(null);
-
-  const fetchSelf = async () => {
-    try {
-      const response = await api.get<User>(`/api/v1/users/${DEMO_USER_ID}`);
-      setUser(response.data);
-      setSelectedInterests(response.data.interests || []);
-    } catch (error) {
-      console.error("Failed to fetch user:", error);
-    }
-  };
-
-  const fetchAllUsers = async () => {
-    try {
-      const response = await api.get<User[]>("/api/v1/users/");
-      setAllUsers(response.data);
-    } catch (error) {
-      console.error("Failed to fetch users:", error);
-    }
-  };
-
+  const [groupsJoined, setGroupsJoined] = useState<number>(0);
   useEffect(() => {
-    fetchSelf();
-    fetchAllUsers();
+    const fetchUser = async () => {
+      try {
+        const response = await api.get<User>(`/api/v1/users/${DEMO_USER_ID}`);
+        setUser(response.data);
+        // Initialize selected interests or use user's interests
+        setSelectedInterests(response.data.interests || []);
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+      }
+    };
+    fetchUser();
+
+    const fetchGroups = async () => {
+      try {
+        const response = await api.get<any[]>("/api/v1/groups/");
+        // Count groups where user is a member
+        const joinedCount = response.data.filter(group =>
+          group.members?.includes(DEMO_USER_ID)
+        ).length;
+        setGroupsJoined(joinedCount);
+      } catch (error) {
+        console.error("Failed to fetch groups:", error);
+      }
+    };
+    fetchGroups();
   }, []);
 
   const otherUsers = useMemo(() => {
@@ -107,6 +104,12 @@ export default function SidebarLeft() {
       prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
     );
   };
+  const friends = [
+    { name: "Sarah K.", status: "Online" },
+    { name: "John D.", status: "In Game" },
+    { name: "Mike R.", status: "Away" },
+    { name: "Elena V.", status: "Online" },
+  ];
 
   if (!user) return <div className="w-80 h-[85vh] flex items-center justify-center glass-panel"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>;
 
@@ -122,14 +125,15 @@ export default function SidebarLeft() {
         <CardContent>
           <div className="flex items-center gap-4 mb-4">
             <Avatar className="h-12 w-12 border-2 border-primary ring-2 ring-primary/20">
-              <AvatarImage src={avatar1} />
-              <AvatarFallback>{user.name.slice(0, 2).toUpperCase()}</AvatarFallback>
-            </Avatar>
+              <AvatarFallback className="bg-muted text-muted-foreground">
+                <UserIcon className="h-6 w-6" />
+              </AvatarFallback>
+            </Avatar >
             <div>
               <div className="font-bold text-lg">{user.name}</div>
               <div className="text-xs text-muted-foreground uppercase tracking-widest">{user.location}</div>
             </div>
-          </div>
+          </div >
 
           <div className="space-y-2">
             <div className="text-xs font-semibold text-muted-foreground uppercase">Interests</div>
@@ -151,11 +155,11 @@ export default function SidebarLeft() {
               })}
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </CardContent >
+      </Card >
 
       {/* Community Members */}
-      <Card className="glass-panel border-none text-foreground flex-1 flex flex-col min-h-0 overflow-hidden">
+      < Card className="glass-panel border-none text-foreground flex-1 flex flex-col min-h-0 overflow-hidden" >
         <CardHeader className="pb-2">
           <div className="flex justify-between items-center">
             <CardTitle className="text-sm font-bold text-muted-foreground uppercase">Community</CardTitle>
@@ -174,82 +178,93 @@ export default function SidebarLeft() {
             />
           </div>
 
-          <div className="flex-1 min-h-0 overflow-y-auto pr-2" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.15) transparent' }}>
-            <div className="space-y-2 mt-1">
-              {filteredUsers.length === 0 ? (
-                <div className="text-xs text-muted-foreground text-center py-6">
-                  {searchQuery ? "No members match your search." : "No other community members yet."}
+          <ScrollArea className="flex-1 pr-4">
+            <div className="space-y-3 mt-2">
+              {friends.map((friend, i) => (
+                <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group">
+                  <Avatar className="h-9 w-9 border border-white/10 group-hover:border-primary/50 transition-colors">
+                    <AvatarFallback className="bg-muted text-muted-foreground">
+                      <UserIcon className="h-4 w-4" />
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1 overflow-hidden">
+                    <div className="text-sm font-medium truncate group-hover:text-primary transition-colors">{friend.name}</div>
+                    <div className="text-xs text-muted-foreground flex items-center gap-1">
+                      <span className={`w-1.5 h-1.5 rounded-full ${friend.status === 'Online' ? 'bg-green-500 shadow-[0_0_5px_theme(colors.green.500)]' : 'bg-yellow-500'}`} />
+                      {friend.status}
+                    </div>
+                  </div>
                 </div>
               ) : (
                 filteredUsers.map((friend, i) => {
                   const liked = hasLiked(friend);
-                  const shared = getSharedInterests(friend);
-                  const avatarSrc = avatarPool[i % avatarPool.length];
+              const shared = getSharedInterests(friend);
+              const avatarSrc = avatarPool[i % avatarPool.length];
 
-                  return (
-                    <div
-                      key={friend.id}
-                      className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-white/5 transition-all cursor-pointer group border border-transparent hover:border-white/10"
-                    >
-                      <Avatar className="h-9 w-9 border border-white/10 group-hover:border-primary/50 transition-colors mt-0.5">
-                        <AvatarImage src={avatarSrc} />
-                        <AvatarFallback>{friend.name.slice(0, 2).toUpperCase()}</AvatarFallback>
-                      </Avatar>
-                      <div className="flex-1 overflow-hidden min-w-0">
-                        <div className="flex items-center justify-between gap-2">
-                          <div className="text-sm font-medium truncate group-hover:text-primary transition-colors">
-                            {friend.name}
-                          </div>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className={`h-6 w-6 p-0 shrink-0 transition-all ${liked
-                              ? "text-red-400 hover:text-red-300 hover:bg-red-500/10"
-                              : "text-muted-foreground hover:text-primary hover:bg-primary/10 opacity-0 group-hover:opacity-100"
-                              }`}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              liked ? handleUnlike(friend.id) : handleLike(friend.id);
-                            }}
-                            disabled={likingUserId === friend.id}
-                          >
-                            <Heart
-                              size={14}
-                              fill={liked ? "currentColor" : "none"}
-                              className={likingUserId === friend.id ? "animate-pulse" : ""}
-                            />
-                          </Button>
-                        </div>
-                        <div className="text-[11px] text-muted-foreground/70 flex items-center gap-1">
-                          {friend.location}
-                        </div>
-                        {shared.length > 0 && (
-                          <div className="flex flex-wrap gap-1 mt-1.5">
-                            {shared.slice(0, 3).map(interest => (
-                              <Badge
-                                key={interest}
-                                className="text-[9px] h-4 px-1.5 bg-primary/10 text-primary border-primary/20 font-normal"
-                              >
-                                {interest}
-                              </Badge>
-                            ))}
-                            {shared.length > 3 && (
-                              <span className="text-[9px] text-muted-foreground/50">+{shared.length - 3}</span>
-                            )}
-                          </div>
-                        )}
-                      </div>
+              return (
+              <div
+                key={friend.id}
+                className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-white/5 transition-all cursor-pointer group border border-transparent hover:border-white/10"
+              >
+                <Avatar className="h-9 w-9 border border-white/10 group-hover:border-primary/50 transition-colors mt-0.5">
+                  <AvatarImage src={avatarSrc} />
+                  <AvatarFallback>{friend.name.slice(0, 2).toUpperCase()}</AvatarFallback>
+                </Avatar>
+                <div className="flex-1 overflow-hidden min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="text-sm font-medium truncate group-hover:text-primary transition-colors">
+                      {friend.name}
                     </div>
-                  );
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className={`h-6 w-6 p-0 shrink-0 transition-all ${liked
+                        ? "text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                        : "text-muted-foreground hover:text-primary hover:bg-primary/10 opacity-0 group-hover:opacity-100"
+                        }`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        liked ? handleUnlike(friend.id) : handleLike(friend.id);
+                      }}
+                      disabled={likingUserId === friend.id}
+                    >
+                      <Heart
+                        size={14}
+                        fill={liked ? "currentColor" : "none"}
+                        className={likingUserId === friend.id ? "animate-pulse" : ""}
+                      />
+                    </Button>
+                  </div>
+                  <div className="text-[11px] text-muted-foreground/70 flex items-center gap-1">
+                    {friend.location}
+                  </div>
+                  {shared.length > 0 && (
+                    <div className="flex flex-wrap gap-1 mt-1.5">
+                      {shared.slice(0, 3).map(interest => (
+                        <Badge
+                          key={interest}
+                          className="text-[9px] h-4 px-1.5 bg-primary/10 text-primary border-primary/20 font-normal"
+                        >
+                          {interest}
+                        </Badge>
+                      ))}
+                      {shared.length > 3 && (
+                        <span className="text-[9px] text-muted-foreground/50">+{shared.length - 3}</span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+              );
                 })
               )}
             </div>
           </div>
         </CardContent>
-      </Card>
+      </Card >
 
       {/* Stats */}
-      <Card className="glass-panel border-none text-foreground shrink-0">
+      < Card className="glass-panel border-none text-foreground shrink-0" >
         <CardContent className="pt-6">
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-white/5 rounded-lg p-3 text-center border border-white/5 hover:border-primary/30 transition-colors">
@@ -260,13 +275,13 @@ export default function SidebarLeft() {
             <Link href="/groups">
               <div className="bg-white/5 rounded-lg p-3 text-center border border-white/5 hover:border-secondary/30 transition-colors cursor-pointer group">
                 <div className="text-secondary mb-1 flex justify-center group-hover:scale-110 transition-transform"><Users size={18} /></div>
-                <div className="text-2xl font-bold font-rajdhani text-secondary">8</div>
+                <div className="text-2xl font-bold font-rajdhani text-secondary">{groupsJoined}</div>
                 <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Groups Joined</div>
               </div>
             </Link>
           </div>
         </CardContent>
-      </Card>
-    </div>
+      </Card >
+    </div >
   );
 }
